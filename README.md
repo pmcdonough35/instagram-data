@@ -1,5 +1,3 @@
-# instagram-data# README
-
 ## Technology requirements
 
 With the following exceptions, you may use any libraries, platforms, and tools to complete this project.
