@@ -1,17 +1,5 @@
 # instagram-data# README
 
-Welcome!
-
-This project is designed for you to demonstrate your knowledge of:
-
-- Software development
-- System design
-- Developer operations
-
-# What To Do
-
-Imagine you are a member of Mavrck's Engineering Team. You have been asked to lead development on a new full-stack project. Implement this as you would in a professional environment using industry-standard best practices.
-
 ## Technology requirements
 
 With the following exceptions, you may use any libraries, platforms, and tools to complete this project.
