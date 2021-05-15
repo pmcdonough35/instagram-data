@@ -1,11 +1,11 @@
-package com.mavrk.interview;
+package com.app.instagram.controller;
 
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-public class GreetingsController {
+public class InstagramController {
 
 	@RequestMapping("/")
 	public String index() {
