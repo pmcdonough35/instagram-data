@@ -4,25 +4,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Account {
+public class Post {
 
 	@JsonProperty("graphql")
-	private AccountInfo accountInfo;
+	private PostInfo postInfo;
 	
-	public Account() {
+	public Post() {
 		
 	}
   
-	public AccountInfo getAccountInfo() {
-		return this.accountInfo;
+	public PostInfo getAccountInfo() {
+		return this.postInfo;
 	}
 
-	public void setAccountInfo(AccountInfo accountInfo) {
-		this.accountInfo = accountInfo;
+	public void setPostInfo(PostInfo postInfo) {
+		this.postInfo = postInfo;
 	}
   
 	@Override
 	public String toString() {
-		return "Account {accountInfo=" + accountInfo + "}";
+		return "Post {postInfo=" + postInfo + "}";
 	}
 }
