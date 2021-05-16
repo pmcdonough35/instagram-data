@@ -13,36 +13,47 @@ public class User {
   
 	@JsonProperty("edge_followed_by")
 	private Followers followers;
-	public User() {
-	  
-	}
-  
+	
+	@JsonProperty("edge_owner_to_timeline_media")
+	private RecentPost recentPost;
+
 	public String getBiography() {
-		return this.biography;
+		return biography;
 	}
 
 	public void setBiography(String biography) {
 		this.biography = biography;
 	}
-  
+
 	public String getFullName() {
-		return this.fullName;
+		return fullName;
 	}
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	
+
 	public Followers getFollowers() {
-		return this.followers;
+		return followers;
 	}
-	
+
 	public void setFollowers(Followers followers) {
 		this.followers = followers;
 	}
-  
+
+	public RecentPost getRecentPost() {
+		return recentPost;
+	}
+
+	public void setRecentPost(RecentPost recentPost) {
+		this.recentPost = recentPost;
+	}
+
 	@Override
 	public String toString() {
-		return "User {biography=" + biography + ", fullName=" + fullName + ", followers=" + followers + "}";
+		return "User {biography=" + biography + ", fullName=" + fullName + ", followers=" + followers + ", recentPost="
+				+ recentPost + "}";
 	}
+	
+	
 }
