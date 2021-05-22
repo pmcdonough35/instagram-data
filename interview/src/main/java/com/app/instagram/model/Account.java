@@ -41,6 +41,6 @@ public class Account {
   
 	@Override
 	public String toString() {
-		return "Account {dateTime=" + dtf.format(now) + ", accountInfo=" + accountInfo + "}";
+		return "Account {dateTime=" + dateTime + ", accountInfo=" + accountInfo + "}";
 	}
 }
