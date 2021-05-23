@@ -15,7 +15,7 @@ public class Followers {
 		return this.followerCount;
 	}
 
-	public void setFollowersCount(Followers followers) {
+	public void setFollowersCount(Integer followerCount) {
 		this.followerCount = followerCount;
 	}
   

@@ -17,7 +17,7 @@ public class CommentInfo {
 		return this.numComments;
 	}
 	
-	public void setNumComments() {
+	public void setNumComments(Integer numComments) {
 		this.numComments = numComments;
 	}
 	

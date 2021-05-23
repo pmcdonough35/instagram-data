@@ -17,7 +17,7 @@ public class LikeInfo {
 		return this.numLikes;
 	}
 	
-	public void setNumLikes() {
+	public void setNumLikes(Integer numLikes) {
 		this.numLikes = numLikes;
 	}
 	

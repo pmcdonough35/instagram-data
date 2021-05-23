@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,9 +18,12 @@ public class InstagramServiceBean implements InstagramServiceInterface {
 
 	private static final String GET_ACCOUNT = "https://www.instagram.com/{id}/channel/?__a={__a}";
 	private static final String GET_POST = "https://www.instagram.com/p/{post-id}/?__a={__a}";
-	private static String postId = "";
-	static RestTemplate restTemplate = new RestTemplate();
+	private final RestTemplate restTemplate;
 	private static final Logger log = LoggerFactory.getLogger(InstagramServiceBean.class);
+	
+	public InstagramServiceBean(RestTemplateBuilder restTemlateBuilder) {
+		this.restTemplate = restTemlateBuilder.build();
+	}
 	
 	@Override
 	public Account getAccount(String id, String __a) {
@@ -29,10 +33,10 @@ public class InstagramServiceBean implements InstagramServiceInterface {
 		Account account = restTemplate.getForObject(
 				GET_ACCOUNT, Account.class, params);
 		
-		postId = account.getAccountInfo().getUser().getRecentPost().getEdges()[0].getNode().getShortcode();
+		String postId = account.getAccountInfo().getUser().getRecentPost().getEdges()[0].getNode().getShortcode();
 		Post p = getPost(postId, "1");
 		//String s = account + p;
-		log.info("ABHDNISOAKD" + p.toString() + account.toString()); 
+		log.info("ABHDNISOAKD" + account.toString()); 
 		return account;
 	}
 	
@@ -42,7 +46,8 @@ public class InstagramServiceBean implements InstagramServiceInterface {
 		params.put("post-id", postId);
 		params.put("__a", __a);
 		Post post = restTemplate.getForObject(
-				GET_POST, Post.class, params);  
+				GET_POST, Post.class, params); 
+		log.info("POSTABHDNISOAKD" + post.toString()); 
 		return post;
 	}
 }

@@ -13,7 +13,7 @@ public class Post {
 		
 	}
   
-	public PostInfo getAccountInfo() {
+	public PostInfo getPostInfo() {
 		return this.postInfo;
 	}
 
