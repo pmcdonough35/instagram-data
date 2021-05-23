@@ -11,7 +11,9 @@ import {Account} from '../account';
 export class AccountComponent implements OnInit {
 
   accountId = '';
-  account: any
+  postId = '';
+  account: any;
+  post: any;
   constructor(private as: AccountService) { }
 
   ngOnInit(): void {
@@ -19,11 +21,19 @@ export class AccountComponent implements OnInit {
 
   getAccount() {
     var accountId = this.accountId;
-    console.log(accountId);
+    var postId = this.postId;
+    console.log(postId);
     this.as.getAccount(accountId).subscribe(
       response => {
         this.account = response; 
         console.log(this.account)   
+      }
+    )
+
+    this.as.getPost(postId).subscribe(
+      response => {
+        this.account = response; 
+        console.log(this.post)   
       }
     )
   }
