@@ -1,14 +1,10 @@
-## Technology requirements
-
-With the following exceptions, you may use any libraries, platforms, and tools to complete this project.
-
 ### Architecture
 
 1. REST (Representational State Transfer)
 
 ### Languages
 
-1. Kotlin or Java
+1. Java
 
 ## Product requirements
 
