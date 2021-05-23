@@ -8,7 +8,7 @@ With the following exceptions, you may use any libraries, platforms, and tools t
 
 ### Languages
 
-1. Kotlin or Java
+1. Java
 
 ## Product requirements
 
