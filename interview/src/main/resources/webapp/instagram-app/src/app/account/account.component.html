@@ -1,10 +1,52 @@
 <div class="container">
-    <h2>Get Instagram Account Info</h2>
+    <h2 id="mainHeader">Get Instagram Account Info</h2>
     <form #accountform="ngForm" (ngSubmit)="getAccount()">
       <div class="form-group">
         <label for="account">Account:</label>
-        <input type="text" class="form-control" id="accountId" placeholder="Enter account" name="accountId">
+        <input type="text" [(ngModel)]= accountId class="form-control" id="accountId" placeholder="Enter account" name="accountId">
       </div>
       <button type="submit" class="btn btn-info">Get Account</button>
     </form>
+
+  <h2 id="accountInfo">Account Info</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Last Retrieved</th>
+        <th>Biography</th>
+        <th>Name</th>
+        <th>Follower Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>May</td>
+        <td>Hi im May!</td>
+        <td>May Mull</td>
+        <td>397</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="recentPost">Recent Post</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Media URL</th>
+        <th>Likes</th>
+        <th>Comments</th>
+        <th>Post Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>http://</td>
+        <td>78</td>
+        <td>6</td>
+        <td>image</td>
+      </tr>
+    </tbody>
+  </table>
+
+
   </div>

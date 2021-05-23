@@ -10,16 +10,20 @@ import {Account} from '../account';
 })
 export class AccountComponent implements OnInit {
 
+  accountId = '';
+  account: any
   constructor(private as: AccountService) { }
 
   ngOnInit(): void {
-    this.getAccount();
   }
 
   getAccount() {
-    this.as.getAccount().subscribe(
+    var accountId = this.accountId;
+    console.log(accountId);
+    this.as.getAccount(accountId).subscribe(
       response => {
-        console.log(response);
+        this.account = response; 
+        console.log(this.account)   
       }
     )
   }

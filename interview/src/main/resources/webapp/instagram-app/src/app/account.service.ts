@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpParams} from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,9 @@ export class AccountService {
   
   constructor(private _http: HttpClient) { }
   
-  public getAccount():Observable<any>{
-    return this._http.get<any>('http://localhost:8080/api/account/cristiano/?__a=1');
+  public getAccount(accountId: string):Observable<any>{
+    let getAccountUrl = `http://localhost:8080/api/account/${accountId}/`;
+    const params = new HttpParams().append('__a', '1');
+    return this._http.get<any>(getAccountUrl, {params});
   }
 }
