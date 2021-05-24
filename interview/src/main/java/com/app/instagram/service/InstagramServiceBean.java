@@ -32,11 +32,6 @@ public class InstagramServiceBean implements InstagramServiceInterface {
 		params.put("__a", __a);
 		Account account = restTemplate.getForObject(
 				GET_ACCOUNT, Account.class, params);
-		
-		String postId = account.getAccountInfo().getUser().getRecentPost().getEdges()[0].getNode().getShortcode();
-		Post p = getPost(postId, "1");
-		//String s = account + p;
-		log.info("ABHDNISOAKD" + account.toString()); 
 		return account;
 	}
 	

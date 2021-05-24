@@ -7,46 +7,61 @@
       </div>
       <button type="submit" class="btn btn-info">Get Account</button>
     </form>
+  <div *ngIf="account">
+    <h2 id="accountInfo" >Account Info</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Last Retrieved</th>
+          <th>Biography</th>
+          <th>Name</th>
+          <th>Follower Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{account.dateTime}}</td>
+          <td>{{account.graphql.user.biography}}</td>
+          <td>{{account.graphql.user.full_name}}</td>
+          <td>{{account.graphql.user.edge_followed_by.followersCount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <h2 id="accountInfo">Account Info</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Last Retrieved</th>
-        <th>Biography</th>
-        <th>Name</th>
-        <th>Follower Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{account.dateTime}}</td>
-        <td>{{account.graphql.user.biography}}</td>
-        <td>{{account.graphql.user.full_name}}</td>
-        <td>{{account.graphql.user.edge_followed_by.followersCount}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2 id="recentPost">Recent Post</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Media URL</th>
-        <th>Likes</th>
-        <th>Comments</th>
-        <th>Post Type</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{post.graphql.shortcode_media.display_url}}</td>
-        <td>{{post.graphql.shortcode_media.edge_media_preview_like.count}}</td>
-        <td>{{post.graphql.shortcode_media.edge_media_preview_comment.count}}</td>
-        <td>{{post.graphql.shortcode_media.__typename}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="post">
+    <h2 id="recentPost">Most Recent Post</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Media URL</th>
+          <th>Likes</th>
+          <th>Comments</th>
+          <th>Post Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{post.graphql.shortcode_media.display_url}}</td>
+          <td>{{post.graphql.shortcode_media.edge_media_preview_like.count}}</td>
+          <td>{{post.graphql.shortcode_media.edge_media_preview_comment.count}}</td>
+          <ng-container *ngIf="post.graphql.shortcode_media.__typename == 'GraphImage'; else elseIfBlock">
+            <td>Image</td>
+          </ng-container>
+          <ng-template #elseIfBlock>
+            <ng-container *ngIf="post.graphql.shortcode_media.__typename == 'GraphSidecar'; else elseBlock">
+              <td>Carousel</td>
+            </ng-container>
+          </ng-template>
+          <ng-template #elseBlock>
+            <ng-container *ngIf="post.graphql.shortcode_media.__typename == 'GraphVideo'">
+              <td>Video</td>
+            </ng-container>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
   </div>

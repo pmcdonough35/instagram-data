@@ -17,6 +17,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,17 +34,25 @@ public class InstagramController {
 	
 	@GetMapping("/api/account/{id}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Account getAccount(@PathVariable String id, @RequestParam String __a) {
-		
+	public ResponseEntity<Account> getAccount(@PathVariable String id, @RequestParam String __a) {	
 		Account account = instagramService.getAccount(id, __a);
-		return account;
+		if (account == null) {
+			return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
+		}
+		log.info(account.toString());
+		return new ResponseEntity<Account>(account, HttpStatus.OK);
 	}
 	
 	@GetMapping("/api/post/{post-id}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Post getPost(@PathVariable("post-id") String postId, @RequestParam String __a) {
+	public ResponseEntity<Post> getPost(@PathVariable("post-id") String postId, @RequestParam String __a) {
 		Post post = instagramService.getPost(postId, __a);
-		return post;
+		
+		if (post == null) {
+			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
+		}
+		log.info(post.toString());
+		return new ResponseEntity<Post>(post, HttpStatus.OK);
 	}
 	
 	
