@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.app.instagram.model.Account;
 import com.app.instagram.model.Post;
-import com.app.instagram.service.InstagramServiceBean;
+import com.app.instagram.service.InstagramService;
 import com.app.instagram.service.InstagramServiceInterface;
 
 import java.time.LocalDateTime;
@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class InstagramController {
 	
 	@Autowired
@@ -33,7 +34,6 @@ public class InstagramController {
 	
 	
 	@GetMapping("/api/account/{id}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Account> getAccount(@PathVariable String id, @RequestParam String __a) {	
 		Account account = instagramService.getAccount(id, __a);
 		if (account == null) {
@@ -44,7 +44,6 @@ public class InstagramController {
 	}
 	
 	@GetMapping("/api/post/{post-id}")
-	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Post> getPost(@PathVariable("post-id") String postId, @RequestParam String __a) {
 		Post post = instagramService.getPost(postId, __a);
 		

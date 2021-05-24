@@ -14,14 +14,14 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InstagramServiceBean implements InstagramServiceInterface {
+public class InstagramService implements InstagramServiceInterface {
 
 	private static final String GET_ACCOUNT = "https://www.instagram.com/{id}/channel/?__a={__a}";
 	private static final String GET_POST = "https://www.instagram.com/p/{post-id}/?__a={__a}";
 	private final RestTemplate restTemplate;
-	private static final Logger log = LoggerFactory.getLogger(InstagramServiceBean.class);
+	private static final Logger log = LoggerFactory.getLogger(InstagramService.class);
 	
-	public InstagramServiceBean(RestTemplateBuilder restTemlateBuilder) {
+	public InstagramService(RestTemplateBuilder restTemlateBuilder) {
 		this.restTemplate = restTemlateBuilder.build();
 	}
 	
