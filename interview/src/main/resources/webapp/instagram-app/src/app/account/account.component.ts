@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { AccountService } from '../account.service';
 import {Account} from '../account';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account',
@@ -11,7 +12,7 @@ import {Account} from '../account';
 export class AccountComponent implements OnInit {
 
   accountId = '';
-  postId = '';
+  postId = 'HIII';
   account: any;
   post: any;
   constructor(private as: AccountService) { }
@@ -21,21 +22,18 @@ export class AccountComponent implements OnInit {
 
   getAccount() {
     var accountId = this.accountId;
-    var postId = this.postId;
-    console.log(postId);
-    this.as.getAccount(accountId).subscribe(
-      response => {
-        this.account = response; 
-        console.log(this.account)   
-      }
-    )
 
-    this.as.getPost(postId).subscribe(
-      response => {
-        this.account = response; 
-        console.log(this.post)   
-      }
-    )
+    this.as.getAccount(accountId).pipe(
+      tap(output => {
+        console.log(output);
+        this.account = output;            
+    }),
+    switchMap(output => this.as.getPost(this.account.graphql.user.edge_owner_to_timeline_media.edges[0].node.shortcode)),
+    tap(output2 => {
+        console.log(output2);
+        this.post = output2;            
+    })
+  ).subscribe(output2 => alert(output2));
   }
 
 }

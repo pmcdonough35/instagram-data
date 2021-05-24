@@ -21,9 +21,9 @@
     <tbody>
       <tr>
         <td>{{account.dateTime}}</td>
-        <td>{{account.biography}}</td>
-        <td>{{account.fullName}}</td>
-        <td>{{account.followers}}</td>
+        <td>{{account.graphql.user.biography}}</td>
+        <td>{{account.graphql.user.full_name}}</td>
+        <td>{{account.graphql.user.edge_followed_by.followersCount}}</td>
       </tr>
     </tbody>
   </table>
@@ -40,10 +40,10 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{post.mediaURL}}</td>
-        <td>{{post.numLikes}}</td>
-        <td>{{post.numComments}}</td>
-        <td>{{post.postType}}</td>
+        <td>{{post.graphql.shortcode_media.display_url}}</td>
+        <td>{{post.graphql.shortcode_media.edge_media_preview_like.count}}</td>
+        <td>{{post.graphql.shortcode_media.edge_media_preview_comment.count}}</td>
+        <td>{{post.graphql.shortcode_media.__typename}}</td>
       </tr>
     </tbody>
   </table>

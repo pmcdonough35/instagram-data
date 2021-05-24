@@ -16,6 +16,7 @@ export class AccountService {
   }
 
   public getPost(postId: string):Observable<any>{
+    console.log(postId);
     let getPostUrl = `http://localhost:8080/api/post/${postId}/`;
     const params = new HttpParams().append('__a', '1');
     return this._http.get<any>(getPostUrl, {params});
